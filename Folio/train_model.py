@@ -15,8 +15,6 @@ from sklearn.model_selection import train_test_split
 ap = argparse.ArgumentParser()
 ap.add_argument("-c", "--conf", required=True,
                 help="path to the configuration file")
-ap.add_argument("-n", "--hard-negatives", type=int, default=-1,
-                help="flag indicating whether or not hard negatives should be used")
 args = vars(ap.parse_args())
 
 # load the configuration file and the initial dataset

@@ -23,7 +23,6 @@ conf = Conf(args["conf"])
 model = pickle.loads(open(conf["classifier_path"], "rb").read())
 hog = HOG(orientations=conf["orientations"], pixelsPerCell=tuple(conf["pixels_per_cell"]),
           cellsPerBlock=tuple(conf["cells_per_block"]), normalize=conf["normalize"])
-od = ObjectDetector(model, hog)
 
 # load the image and convert it to grayscale
 image = cv2.imread(args["image"])
