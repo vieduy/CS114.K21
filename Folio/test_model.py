@@ -1,9 +1,6 @@
 # import the necessary packages
-from pyimagesearch.object_detection.nms import non_max_suppression
-from pyimagesearch.object_detection.objectdetector import ObjectDetector
-from pyimagesearch.descriptors.hog import HOG
-from pyimagesearch.utils.conf import Conf
-import numpy as np
+from scripts.descriptors.hog import HOG
+from scripts.utils.conf import Conf
 import imutils
 import argparse
 import pickle

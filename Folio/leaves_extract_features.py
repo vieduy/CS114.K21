@@ -1,12 +1,9 @@
 # import the necessary packages
 from __future__ import print_function
-from pyimagesearch.object_detection import helpers
-from pyimagesearch.descriptors.hog import HOG
-from pyimagesearch.utils import dataset
-from pyimagesearch.utils.conf import Conf
+from scripts.descriptors.hog import HOG
+from scripts.utils import dataset
+from scripts.utils.conf import Conf
 from imutils import paths
-from scipy import io
-import numpy as np
 import progressbar
 import argparse
 import random

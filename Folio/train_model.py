@@ -3,8 +3,8 @@ from __future__ import print_function
 
 from sklearn.metrics import accuracy_score
 
-from pyimagesearch.utils import dataset
-from pyimagesearch.utils.conf import Conf
+from scripts.utils import dataset
+from scripts.utils.conf import Conf
 from sklearn.svm import SVC
 import numpy as np
 import argparse
