@@ -2,12 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="fc02dcda-8338-47ba-938a-e18946d30690" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/challenge_video.mp4" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/project_video.mp4" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Conf/leaf.json" beforeDir="false" afterPath="$PROJECT_DIR$/Conf/leaf.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/leaves_extract_features.py" beforeDir="false" afterPath="$PROJECT_DIR$/leaves_extract_features.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_model.py" beforeDir="false" afterPath="$PROJECT_DIR$/test_model.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/train_model.py" beforeDir="false" afterPath="$PROJECT_DIR$/train_model.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -27,6 +24,7 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../Folio" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
@@ -34,7 +32,7 @@
       <recent name="D:\ML_OPENCV" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.leaves_extract_features">
+  <component name="RunManager" selected="Python.ransac">
     <configuration name="a_star" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="ML_OPENCV" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -69,27 +67,6 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/explore_dims.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="helpers_pyramid" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="ML_OPENCV" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/helpers_pyramid.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -140,13 +117,34 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="ransac" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="ML_OPENCV" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/ransac.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.ransac" />
         <item itemvalue="Python.leaves_extract_features" />
         <item itemvalue="Python.hog" />
         <item itemvalue="Python.explore_dims" />
         <item itemvalue="Python.a_star" />
-        <item itemvalue="Python.helpers_pyramid" />
       </list>
     </recent_temporary>
   </component>
@@ -164,30 +162,30 @@
     <servers />
   </component>
   <component name="WindowStateProjectService">
-    <state x="734" y="324" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1587695717605">
+    <state x="734" y="324" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1588995660685">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="734" y="324" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1587695717605" />
-    <state x="740" y="276" key="FileChooserDialogImpl" timestamp="1586786192393">
+    <state x="734" y="324" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1588995660685" />
+    <state x="740" y="276" key="FileChooserDialogImpl" timestamp="1587776987805">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="740" y="276" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1586786192393" />
-    <state width="1899" height="256" key="GridCell.Tab.0.bottom" timestamp="1587725264433">
+    <state x="740" y="276" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1587776987805" />
+    <state width="1899" height="256" key="GridCell.Tab.0.bottom" timestamp="1589005824947">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1899" height="256" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1587725264433" />
-    <state width="1899" height="256" key="GridCell.Tab.0.center" timestamp="1587725264433">
+    <state width="1899" height="256" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1589005824947" />
+    <state width="1899" height="256" key="GridCell.Tab.0.center" timestamp="1589005824947">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1899" height="256" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1587725264433" />
-    <state width="1899" height="256" key="GridCell.Tab.0.left" timestamp="1587725264433">
+    <state width="1899" height="256" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1589005824947" />
+    <state width="1899" height="256" key="GridCell.Tab.0.left" timestamp="1589005824947">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1899" height="256" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1587725264433" />
-    <state width="1899" height="256" key="GridCell.Tab.0.right" timestamp="1587725264433">
+    <state width="1899" height="256" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1589005824947" />
+    <state width="1899" height="256" key="GridCell.Tab.0.right" timestamp="1589005824947">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1899" height="256" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1587725264433" />
+    <state width="1899" height="256" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1589005824947" />
     <state width="1899" height="348" key="GridCell.Tab.1.bottom" timestamp="1586254949230">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -204,13 +202,13 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1899" height="348" key="GridCell.Tab.1.right/0.0.1920.1040@0.0.1920.1040" timestamp="1586254949230" />
-    <state x="461" y="163" key="SettingsEditor" timestamp="1586097246643">
+    <state x="461" y="163" key="SettingsEditor" timestamp="1588997125206">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="461" y="163" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1586097246643" />
-    <state x="656" y="345" key="com.intellij.ide.util.TipDialog" timestamp="1587745437350">
+    <state x="461" y="163" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1588997125206" />
+    <state x="656" y="345" key="com.intellij.ide.util.TipDialog" timestamp="1589014274452">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="656" y="345" key="com.intellij.ide.util.TipDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1587745437350" />
+    <state x="656" y="345" key="com.intellij.ide.util.TipDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1589014274452" />
   </component>
 </project>
