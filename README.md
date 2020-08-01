@@ -60,8 +60,8 @@ Ngày nay, cơ sở hạ tầng giao thông ngày càng phát triển, việc ph
 <img src='images/3.jpg'> <img src='images/1.jpg'>
 
 #### Non-maximum Suppression (NMS)
-Input: Một danh sách B là các cửa sổ thỏa mãn, cùng với các xác suất dự đoán tương ứng và cuối cùng là ngưỡng overlap N.
-Output: Danh sách D các cửa sổ tối ưu cuối cùng.
+##### Input: Một danh sách B là các cửa sổ thỏa mãn, cùng với các xác suất dự đoán tương ứng và cuối cùng là ngưỡng overlap N.
+##### Output: Danh sách D các cửa sổ tối ưu cuối cùng.
 Các bước thực hiện: 
 1.	Chọn cửa sổ có xác suất dự đoán cao nhất. Xóa nó khỏi B và đưa nó vào D. 
 2.	Tính giá trị IOU(Intersection over Union) của cửa sổ mới được chọn với những cửa sổ còn lại. Nếu giá trị IOU lớn hơn ngưỡng N thì ta sẽ xóa nó khỏi lớp B
