@@ -5,6 +5,7 @@
 ###
 
 Mục tiêu của đồ án này là xây dựng một mô hình có thể phát hiện được các loại biển báo phổ biến trong Làng Đại học.
+Ở đây ta sẽ phân loại 6 loại biển báo phổ biến nhất trong Làng Đại học.
 
 ### Mô tả  bài toán:
 1. Input: Một bức ảnh có chứa biển báo bất kỳ.
@@ -14,34 +15,64 @@ Mục tiêu của đồ án này là xây dựng một mô hình có thể phát
 1. Phát hiện biển báo(*).
 2. Phân loại biển báo(* *).
 
-### Mô hình phát hiện biển báo:
+###
+---
+###
+## Mô hình phát hiện biển báo:
 1. Quét bức ảnh input bằng một cửa sổ trượt từ trái sang phải và từ trên xuống dưới.
 2. Trích xuất đặc trưng ở mỗi vùng scan qua trên hình.
 3.	Sử dụng model phân loại biển báo(* *) để dựng đoán xem vùng đó có chứa biển báo hay không.
 4.	Tổng hợp lại các vùng có chứa biển báo thỏa mãn để có một vùng duy nhất (Final bounding boxes) 
 
-#### Xây dựng Scanner
-•	Để có thể tìm được vật thể chúng ta cần tìm, ta cần phải quét toàn bộ trên bức hình. Vì kích thước của vật thể có thể nằm bất cứ đâu trên hình và có kích thước ngẫu nhiên. Cho nên chúng ta cần xây dụng “scanner” theo 2 tiêu chí sau:
+### Xây dựng Scanner
+Để có thể tìm được vật thể chúng ta cần tìm, ta cần phải quét toàn bộ trên bức hình. Vì kích thước của vật thể có thể nằm bất cứ đâu trên hình và có kích thước ngẫu nhiên. Cho nên chúng ta cần xây dụng “scanner” theo 2 tiêu chí sau:
 - Kích thước ảnh quét: Ta cần phải quét trên bức ảnh với nhiều kích thước khác nhau để có thể tìm ra được vật thể. Gọi tắt là kỹ thuật “Image Pyramid”.
 - Phạm vi quét: Ta cần phải quét phạm vi toàn bức ảnh. Cho nên cần xây dựng một cửa sổ trượt để quét lần lượt toàn bộ bức ảnh theo chiều từ trên xuống và trái sang phải.(Sliding window)
 
-#### Trích xuất đặc trưng ở mỗi vùng scan trên hình
+### Trích xuất đặc trưng ở mỗi vùng scan trên hình
 -	Ta sẽ sử dụng HOG((histogram of oriented gradients) để trích xuất đặc trưng trên những vùng mà cửa sổ trượt qua.
 -	HOG là một feature descriptor được sử dụng trong computer vision và xử lý hình ảnh, dùng để detec một đối tượng. Các khái niệm về HOG được nêu ra từ năm 1986 tuy nhiên cho đến năm 2005 HOG mới được sử dụng rộng rãi sau khi Navneet Dalal và Bill Triggs công bố những bổ sung về HOG. HOG tương tự như các biểu đồ edge orientation, scale-invariant feature transform descriptors (như sift, surf ,..), shape contexts nhưnghog được tính toán trên một lưới dày đặc các cell và chuẩn hóa sự tương phản giữa các block để nâng cao độ chính xác. HOG được sử dụng chủ yếu để mô tả hình dạng và sự xuất hiện của một object trong ảnh.
 
+### Dự đoán đối tượng trong cửa sổ trượt
+-	Ta sẽ sử dụng một model đã được train về các loại biển báo phổ biến trong làng đại học để dự đoán xem có biển báo trong cửa sổ hay không. 
+-  Sau khi dự đoán, nếu có đối tượng biển báo trong hình thì ta sẽ tiến hành trả về tọa độ vị trí của đối tượng.
 
-##### Project Notebook
-My code and a detailed view of the outputs for each step are outlined here in this [Jupyter Notebook](Traffic_Sign_Classifier_final_v5.ipynb). You can also view just the python code via the notebook's corresponding [.py export file](Traffic_Sign_Classifier_final_v5.py).
+### Tổng hợp lại các khung viền
+-  Trong lúc trượt cửa sổ, tùy thuộc vào bước nhảy, sẽ có nhiều cửa sổ thỏa mãn điều kiện có chứa biển báo. Cho nên chúng ta cần phải chọn ra một cửa sổ tối ưu nhất.
+-  Để làm được điều đó chúng ta sẽ sử dụng kỹ thuật Non-maximum Suppression (NMS)
 
+#### Non-maximum Suppression (NMS)
+Input: Một danh sách B là các cửa sổ thỏa mãn, cùng với các xác suất dự đoán tương ứng và cuối cùng là ngưỡng overlap N.
+Output: Danh sách D các cửa sổ tối ưu cuối cùng.
+Các bước thực hiện: 
+1.	Chọn cửa sổ có xác suất dự đoán cao nhất. Xóa nó khỏi B và đưa nó vào D. 
+2.	Tính giá trị IOU(Intersection over Union) của cửa sổ mới được chọn với những cửa sổ còn lại. Nếu giá trị IOU lớn hơn ngưỡng N thì ta sẽ xóa nó khỏi lớp B
+3.	Tiếp tục chọn cửa sổ có xác suất dự đoán cao nhất còn lại. Quay về bước 2
+4.	Lặp cho tới khi không còn giá trị nào trong B
+Giá trị IOU được sử dụng để tính toán sự trùng lặp của 2 khung cửa sổ
 
-##### Rubric Points
-In the write-up below, I consider the project's [rubric points](https://review.udacity.com/#!/rubrics/481/view) and describe how I addressed each point within my implementation.  
 ###
 ---
 ###
-## Data Summary & Exploration
+## Mô hình phân loại biển báo
 
-Throughout this section, I use the Numpy, Pandas, and Matplotlib libraries to explore and visualize the traffic signs data set.
+Mô hình này mục đích là để đưa ra kết quả dự đoán xem trong cửa sổ trượt đó có biển báo hay không và chúng thuộc loại nào.
+
+### Các bước xây dựng:
+1. Thu thập dữ liệu
+2. Xử lý dữ liệu
+3. Phân chia dữ liệu Training và Testing
+4. Chọn model và training
+5. Đánh giá mô hình và nhận xét
+
+### Thu thập dữ liệu:
+Dữ liệu là những bức ảnh biển báo giao thông tự chụp bằng điện thoại. Tùy thuộc vào tần suất xuất hiện nên số ảnh ở mỗi lớp có sự chênh lệch
+
+#### Số lượng
+Training:
+- Biển 127: 109 tấm
+- Biển 
+
 
 ### Data Size & Shape
 I used the default testing splits provided by Udacity.
