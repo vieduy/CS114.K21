@@ -4,8 +4,7 @@
 # **Machine Learning Capstone: Phát hiện biển báo giao thông phổ biến trong Làng Đại học**
 ###
 ### Tổng quan
-Mục tiêu của đồ án này là xây dựng một mô hình có thể phát hiện được các loại biển báo phổ biến trong Làng Đại học.
-Ở đây ta sẽ phân loại 6 loại biển báo phổ biến nhất trong Làng Đại học.
+Ngày nay, cơ sở hạ tầng giao thông ngày càng phát triển, việc phát hiện biển báo để cung cấp thông tin đến người tham gia giao thông là một điều rất quan trọng. Tận dụng những kiến thức đã được học ở môn Machine Learning, kết hợp với những điều gần gũi với đời sống. Nhóm chúng em đã chọn đề tài “Phát hiện các loại biển báo giao thông phổ biến ở Làng Đại học” làm đề tài nghiên cứu. Giúp mọi người có thể hiểu đâu là biển báo giao thông và chúng có ý nghĩa thế nào.
 
 ### Mô tả  bài toán:
 1. Input: Một bức ảnh có chứa biển báo bất kỳ.
