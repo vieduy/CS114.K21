@@ -63,10 +63,10 @@ Ngày nay, cơ sở hạ tầng giao thông ngày càng phát triển, việc ph
 ##### Input: Một danh sách B là các cửa sổ thỏa mãn, cùng với các xác suất dự đoán tương ứng và cuối cùng là ngưỡng overlap N.
 ##### Output: Danh sách D các cửa sổ tối ưu cuối cùng.
 Các bước thực hiện: 
-  1.	Chọn cửa sổ có xác suất dự đoán cao nhất. Xóa nó khỏi B và đưa nó vào D. 
-  2.	Tính giá trị IOU(Intersection over Union)(Giá trị IOU được sử dụng để tính toán sự trùng lặp của 2 khung cửa sổ) của cửa sổ mới được chọn với những cửa sổ còn lại. Nếu giá trị IOU lớn hơn ngưỡng N thì ta sẽ xóa nó khỏi lớp B
-  3.	Tiếp tục chọn cửa sổ có xác suất dự đoán cao nhất còn lại. Quay về bước 2
-  4.	Lặp cho tới khi không còn giá trị nào trong B
+  -	Chọn cửa sổ có xác suất dự đoán cao nhất. Xóa nó khỏi B và đưa nó vào D. 
+  -	Tính giá trị IOU(Intersection over Union)(Giá trị IOU được sử dụng để tính toán sự trùng lặp của 2 khung cửa sổ) của cửa sổ mới được chọn với những cửa sổ còn lại. Nếu giá trị IOU lớn hơn ngưỡng N thì ta sẽ xóa nó khỏi lớp B
+  -	Tiếp tục chọn cửa sổ có xác suất dự đoán cao nhất còn lại. Quay về bước 2
+  -	Lặp cho tới khi không còn giá trị nào trong B
 
 <img src='images/4.jpg'>
 
@@ -127,10 +127,10 @@ Xử lý dữ liệu bao gồm các bước như sau:
 ### Chọn model và training
 Dùng model SVM và KNN để training. Model được import từ scikit-learn
 Ở SVM cần quan tâm tới các hyperparameters như sau:
-1.	C: 0.01
-2.	Probability=true
-3.	Random_state=42
-4.	Kernel=”linear”
+-	C: 0.01
+-	Probability=true
+-	Random_state=42
+-	Kernel=”linear”
 
 Gọi phương thức model.fit để thực hiện training. Sau khi training xong ta sẽ lưu model lại cho những lần dự đoán tiếp theo
 
