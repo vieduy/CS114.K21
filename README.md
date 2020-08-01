@@ -1,22 +1,34 @@
 <img src='images/writeup/collage-1b.jpg'>
 
 ##### Udacity Self-Driving Car Nanodegree
-# *Machine Learning Capstone: Phát hiện biển báo giao thông phổ biến trong Làng Đại học**
+# **Machine Learning Capstone: Phát hiện biển báo giao thông phổ biến trong Làng Đại học**
 ###
 
-Mục tiêu của đồ án này là xây dựng một mô hình có thể phát hiện được các loại biển báo phổ biến trong Làng Đại học
+Mục tiêu của đồ án này là xây dựng một mô hình có thể phát hiện được các loại biển báo phổ biến trong Làng Đại học.
 
-Mô tả  bài toán:
-1. Input: Một bức ảnh có chứa biển báo bất kỳ
-2. Output: Vị trí biển báo trong bức ảnh và tên biển báo đó
+### Mô tả  bài toán:
+1. Input: Một bức ảnh có chứa biển báo bất kỳ.
+2. Output: Vị trí biển báo trong bức ảnh và tên biển báo đó.
 
-The basic steps of the project are as follows:
-1. Load the data set provided by Udacity
-1. Explore, summarize and visualize the data set
-1. Design, train and test a model architecture
-1. Use the model to make predictions on new images
-1. Analyze the softmax probabilities of the new images
-1. Summarize the results with a written report
+### Để xây dựng được mô hình như yêu cầu bài toán đó, ta cần phải xây dựng 2 mô hình:
+1. Phát hiện biển báo(*).
+2. Phân loại biển báo(* *).
+
+### Mô hình phát hiện biển báo:
+1. Quét bức ảnh input bằng một cửa sổ trượt từ trái sang phải và từ trên xuống dưới.
+2. Trích xuất đặc trưng ở mỗi vùng scan qua trên hình.
+3.	Sử dụng model phân loại biển báo(* *) để dựng đoán xem vùng đó có chứa biển báo hay không.
+4.	Tổng hợp lại các vùng có chứa biển báo thỏa mãn để có một vùng duy nhất (Final bounding boxes) 
+
+#### Xây dựng Scanner
+•	Để có thể tìm được vật thể chúng ta cần tìm, ta cần phải quét toàn bộ trên bức hình. Vì kích thước của vật thể có thể nằm bất cứ đâu trên hình và có kích thước ngẫu nhiên. Cho nên chúng ta cần xây dụng “scanner” theo 2 tiêu chí sau:
+- Kích thước ảnh quét: Ta cần phải quét trên bức ảnh với nhiều kích thước khác nhau để có thể tìm ra được vật thể. Gọi tắt là kỹ thuật “Image Pyramid”.
+- Phạm vi quét: Ta cần phải quét phạm vi toàn bức ảnh. Cho nên cần xây dựng một cửa sổ trượt để quét lần lượt toàn bộ bức ảnh theo chiều từ trên xuống và trái sang phải.(Sliding window)
+
+#### Trích xuất đặc trưng ở mỗi vùng scan trên hình
+-	Ta sẽ sử dụng HOG((histogram of oriented gradients) để trích xuất đặc trưng trên những vùng mà cửa sổ trượt qua.
+-	HOG là một feature descriptor được sử dụng trong computer vision và xử lý hình ảnh, dùng để detec một đối tượng. Các khái niệm về HOG được nêu ra từ năm 1986 tuy nhiên cho đến năm 2005 HOG mới được sử dụng rộng rãi sau khi Navneet Dalal và Bill Triggs công bố những bổ sung về HOG. HOG tương tự như các biểu đồ edge orientation, scale-invariant feature transform descriptors (như sift, surf ,..), shape contexts nhưnghog được tính toán trên một lưới dày đặc các cell và chuẩn hóa sự tương phản giữa các block để nâng cao độ chính xác. HOG được sử dụng chủ yếu để mô tả hình dạng và sự xuất hiện của một object trong ảnh.
+
 
 ##### Project Notebook
 My code and a detailed view of the outputs for each step are outlined here in this [Jupyter Notebook](Traffic_Sign_Classifier_final_v5.ipynb). You can also view just the python code via the notebook's corresponding [.py export file](Traffic_Sign_Classifier_final_v5.py).
