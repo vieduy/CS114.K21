@@ -46,6 +46,14 @@ Mục tiêu của đồ án này là xây dựng một mô hình có thể phát
 -	Ta sẽ sử dụng một model đã được train về các loại biển báo phổ biến trong làng đại học để dự đoán xem có biển báo trong cửa sổ hay không. 
 -  Sau khi dự đoán, nếu có đối tượng biển báo trong hình thì ta sẽ tiến hành trả về tọa độ vị trí của đối tượng.
 
+- Model sử dụng trong bài toán này: SVM
+
+#### Support Vector Machine là gì?
+- Là thuật toán thường được áp dụng trong bài toán phân lớp, áp dụng cho cả dữ liệu tuyến tính và không tuyến tính.
+- Mục tiêu: tìm được một mặt phân cách (siêu phẳng trong không gian đa chiều) sao cho tất cả các điểm dữ liệu cùng loại đều nằm về một phía riêng biệt của mặt phân cách đó.
+
+<img src='images/svm.jpg'>
+
 ### Tổng hợp lại các khung viền
 -  Trong lúc trượt cửa sổ, tùy thuộc vào bước nhảy, sẽ có nhiều cửa sổ thỏa mãn điều kiện có chứa biển báo. Cho nên chúng ta cần phải chọn ra một cửa sổ tối ưu nhất.
 -  Để làm được điều đó chúng ta sẽ sử dụng kỹ thuật Non-maximum Suppression (NMS)
