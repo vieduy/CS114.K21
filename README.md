@@ -1,12 +1,14 @@
 <img src='images/writeup/collage-1b.jpg'>
 
 ##### Udacity Self-Driving Car Nanodegree
-# **Project 2: Traffic Sign Recognition**
+# *Machine Learning Capstone: Phát hiện biển báo giao thông phổ biến trong Làng Đại học**
 ###
 
-The goal of this project is to build a neural network that recognizes traffic signs in Germany.
+Mục tiêu của đồ án này là xây dựng một mô hình có thể phát hiện được các loại biển báo phổ biến trong Làng Đại học
 
-Udacity's benchmark for the project is to achieve at least 93% accuracy (on the validation set). However, **my personal goal was to surpass the human level performance benchmark of 98.8% accuracy** identified in [this paper](https://arxiv.org/pdf/1511.02992.pdf) by Mrinal Haloi from the Indian Institute of Technology.
+Mô tả  bài toán:
+1. Input: Một bức ảnh có chứa biển báo bất kỳ
+2. Output: Vị trí biển báo trong bức ảnh và tên biển báo đó
 
 The basic steps of the project are as follows:
 1. Load the data set provided by Udacity
