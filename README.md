@@ -1,5 +1,3 @@
-<img src='images/writeup/collage-1b.jpg'>
-
 ##### Môn: CS114.K21
 # **Machine Learning Capstone: Phát hiện biển báo giao thông phổ biến trong Làng Đại học**
 ###
@@ -96,6 +94,24 @@ Xử lý dữ liệu bao gồm các bước như sau:
 3.	Chuyển ảnh từ ảnh màu RGB sang ảnh xám.
 4.	Resize bức ảnh về chung một kích thước duy nhất là 64x64.
 5.	Sử dụng HOG để trích xuất đặc trưng cho bức ảnh. Chuẩn bị cho bước training
+
+### Chọn model và training
+Dùng model SVM và KNN để training. Model được import từ scikit-learn
+Ở SVM cần quan tâm tới các hyperparameters như sau:
+1.	C: 0.01
+2.	Probability=true
+3.	Random_state=42
+4.	Kernel=”linear”
+
+Gọi phương thức model.fit để thực hiện training. Sau khi training xong ta sẽ lưu model lại cho những lần dự đoán tiếp theo
+
+### Đánh giá mô hình
+- Ta sẽ đánh giá model của chúng ta bằng tập ảnh “Test”. 
+- Tập này bao gồm 20% số ảnh đã chụp được của các lớp. 
+- Tiến hành xử lý ảnh trên tập ảnh “Test” như ở tập training. Sau đó gọi phương thức model.predict ta được kết quả như sau:
+
+<img src='images/acc.jpg'>
+
 ---
 ## Data Preprocessing
 Given the issues identified above, I decided to explore the following preprocessing operations (in addition to the standard practice of _normalization_):
