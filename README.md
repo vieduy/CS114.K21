@@ -161,3 +161,8 @@ Nguyên nhân chính:
 
 ---
 ## Tài liệu tham khảo
+1. SVM: https://machinelearningcoban.com/2017/04/09/smv/
+2. HOG: https://viblo.asia/p/tim-hieu-ve-phuong-phap-mo-ta-dac-trung-hog-histogram-of-oriented-gradients-V3m5WAwxZO7
+3. Sliding window: https://www.pyimagesearch.com/2015/03/23/sliding-windows-for-object-detection-with-python-and-opencv/
+4. NMS: https://towardsdatascience.com/non-maximum-suppression-nms-93ce178e177c
+5. Object detection: Chapter 2 PyimageSearch Gurus - Adrian Rosebrock
