@@ -10,8 +10,10 @@ Mục tiêu của đồ án này là xây dựng một mô hình có thể phát
 ### Mô tả  bài toán:
 1. Input: Một bức ảnh có chứa biển báo bất kỳ.
 2. Output: Vị trí biển báo trong bức ảnh và tên biển báo đó.
+
 <img src='images/2.jpg'>
 <img src='images/1.jpg'>
+
 ### Để xây dựng được mô hình như yêu cầu bài toán đó, ta cần phải xây dựng 2 mô hình:
 1. Phát hiện biển báo(*).
 2. Phân loại biển báo(* *).
