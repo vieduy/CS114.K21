@@ -31,7 +31,7 @@ Mục tiêu của đồ án này là xây dựng một mô hình có thể phát
 Để có thể tìm được vật thể chúng ta cần tìm, ta cần phải quét toàn bộ trên bức hình. Vì kích thước của vật thể có thể nằm bất cứ đâu trên hình và có kích thước ngẫu nhiên. Cho nên chúng ta cần xây dụng “scanner” theo 2 tiêu chí sau:
 - Kích thước ảnh quét: Ta cần phải quét trên bức ảnh với nhiều kích thước khác nhau để có thể tìm ra được vật thể. Gọi tắt là kỹ thuật “Image Pyramid”.
 
-<img src='images/3.jpg'>
+<img src='images/3.png'>
 
 - Phạm vi quét: Ta cần phải quét phạm vi toàn bức ảnh. Cho nên cần xây dựng một cửa sổ trượt để quét lần lượt toàn bộ bức ảnh theo chiều từ trên xuống và trái sang phải.(Sliding window)
 
@@ -108,8 +108,14 @@ Testing:
 ### Xử lý dữ liệu
 Xử lý dữ liệu bao gồm các bước như sau:
 1.	Cắt vùng có chứa biển báo ra khỏi ảnh ban đầu bằng công cụ “Crop” trong Image trên Windows 10.
+
+<img src='images/12.jpg'>
+
 2.	Tăng độ sáng của những bức ảnh chụp bị ngược sáng hoặc độ sáng thấp.
 3.	Chuyển ảnh từ ảnh màu RGB sang ảnh xám.
+
+<img src='images/15.png'>
+
 4.	Resize bức ảnh về chung một kích thước duy nhất là 64x64.
 5.	Sử dụng HOG để trích xuất đặc trưng cho bức ảnh. Chuẩn bị cho bước training
 
