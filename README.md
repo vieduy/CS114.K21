@@ -1,3 +1,4 @@
+<img src='images/collage-1b.jpg'>
 ##### Môn: CS114.K21
 # **Machine Learning Capstone: Phát hiện biển báo giao thông phổ biến trong Làng Đại học**
 ###
@@ -8,7 +9,8 @@ Mục tiêu của đồ án này là xây dựng một mô hình có thể phát
 ### Mô tả  bài toán:
 1. Input: Một bức ảnh có chứa biển báo bất kỳ.
 2. Output: Vị trí biển báo trong bức ảnh và tên biển báo đó.
-
+<img src='images/2.jpg'>
+<img src='images/1.jpg'>
 ### Để xây dựng được mô hình như yêu cầu bài toán đó, ta cần phải xây dựng 2 mô hình:
 1. Phát hiện biển báo(*).
 2. Phân loại biển báo(* *).
@@ -25,8 +27,9 @@ Mục tiêu của đồ án này là xây dựng một mô hình có thể phát
 ### Xây dựng Scanner
 Để có thể tìm được vật thể chúng ta cần tìm, ta cần phải quét toàn bộ trên bức hình. Vì kích thước của vật thể có thể nằm bất cứ đâu trên hình và có kích thước ngẫu nhiên. Cho nên chúng ta cần xây dụng “scanner” theo 2 tiêu chí sau:
 - Kích thước ảnh quét: Ta cần phải quét trên bức ảnh với nhiều kích thước khác nhau để có thể tìm ra được vật thể. Gọi tắt là kỹ thuật “Image Pyramid”.
+<img src='images/3.jpg'>
 - Phạm vi quét: Ta cần phải quét phạm vi toàn bức ảnh. Cho nên cần xây dựng một cửa sổ trượt để quét lần lượt toàn bộ bức ảnh theo chiều từ trên xuống và trái sang phải.(Sliding window)
-
+<img src='images/sliding_window_example.gif'>
 ### Trích xuất đặc trưng ở mỗi vùng scan trên hình
 -	Ta sẽ sử dụng HOG((histogram of oriented gradients) để trích xuất đặc trưng trên những vùng mà cửa sổ trượt qua.
 -	HOG là một feature descriptor được sử dụng trong computer vision và xử lý hình ảnh, dùng để detec một đối tượng. Các khái niệm về HOG được nêu ra từ năm 1986 tuy nhiên cho đến năm 2005 HOG mới được sử dụng rộng rãi sau khi Navneet Dalal và Bill Triggs công bố những bổ sung về HOG. HOG tương tự như các biểu đồ edge orientation, scale-invariant feature transform descriptors (như sift, surf ,..), shape contexts nhưnghog được tính toán trên một lưới dày đặc các cell và chuẩn hóa sự tương phản giữa các block để nâng cao độ chính xác. HOG được sử dụng chủ yếu để mô tả hình dạng và sự xuất hiện của một object trong ảnh.
