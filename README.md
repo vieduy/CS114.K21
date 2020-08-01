@@ -1,9 +1,9 @@
 <img src='images/writeup/collage-1b.jpg'>
 
-##### Udacity Self-Driving Car Nanodegree
+##### Môn: CS114.K21
 # **Machine Learning Capstone: Phát hiện biển báo giao thông phổ biến trong Làng Đại học**
 ###
-
+### Tổng quan
 Mục tiêu của đồ án này là xây dựng một mô hình có thể phát hiện được các loại biển báo phổ biến trong Làng Đại học.
 Ở đây ta sẽ phân loại 6 loại biển báo phổ biến nhất trong Làng Đại học.
 
@@ -67,54 +67,35 @@ Mô hình này mục đích là để đưa ra kết quả dự đoán xem trong
 
 ### Thu thập dữ liệu:
 Dữ liệu là những bức ảnh biển báo giao thông tự chụp bằng điện thoại. Tùy thuộc vào tần suất xuất hiện nên số ảnh ở mỗi lớp có sự chênh lệch
+Ảnh không chứa biển báo: SceneClass13 gồm 3000 tấm
 
 #### Số lượng
+Bao gồm 6 classes và 1 class ảnh ngoại cảnh(ảnh không chứa biển báo)
 Training:
-- Biển 127: 109 tấm
-- Biển 
+- Biển Speed limit (40km/h): 109 tấm
+- Biển W.207b sign: 108 tấm
+- Biển Pedestrians:88 tấm 
+- Biển No entry: 92 tấm
+- Biển Keep right: 66 tấm
+- Biển Roundabout mandatory: 41 tấm
+- SceneClass13: 3000 tấm(chỉ dùng 1000 tấm)
 
+Testing:
+- Biển Speed limit (40km/h): 18 tấm
+- Biển W.207b sign: 24 tấm
+- Biển Pedestrians: 27 tấm 
+- Biển No entry: 11 tấm
+- Biển Keep right: 8 tấm
+- Biển Roundabout mandatory: 6 tấm
+- SceneClass13: 156 tấm
 
-### Data Size & Shape
-I used the default testing splits provided by Udacity.
-
-* Size of training set: 34,799 (67%)
-* Size of the validation set: 4,410 (9%)
-* Size of test set: 12,630 (24%)
-* Shape of a traffic sign image: (32, 32, 3)
-* Number of unique classes/labels: 43
-
-
-### Data Visualization
-Before designing the neural network, I felt it was important to visualize the data in various ways to gain some intuition for what the model will "see." This not only informs the model structure and parameters, but it also helps me determine what types of preprocessing operations should be applied to the data (if any).
-
-There are a few fundamental ways I used visualizations to inform my decisions:
-1. **Inspect a sample of images**
-
-   Do the images correspond with the expected number of color channels? &mdash; i.e., if `channels=3` then the images should appear in color/RGB not grayscale.
-
-   How clear are the images? Is there anything that makes the signs hard to recognize (e.g. bad weather, darkness, glare, occlusions)?
-2. **Review a sample of the labels**
-
-   Do the labels make sense? Do they accurately correspond with images in the data set?
-3. **Create a histogram showing the distribution of classes/labels**
-
-   How balanced is the dataset? Are there certain classes that dominate? Are there others that are under represented?
-
-### Sample of Images & Labels
-Here is a sample of the original images before they undergo any preprocessing. Overall, the image quality is good and the labels make intuitive sense. However, immediately you notice a few things we'll want to adjust during preprocessing:
-* Many of the signs are hard to recognize because the **images are dark and have low contrast**.
-* There is **little variation in the sign shape and viewing angle**. Most of the pictures are taken with a straight on view of the sign, which is good for the core data set. However, in real life, signs are viewed from different angles.
-* The **signs are void of any deformations or occlusions**. Again, this is good because we need a clean set of training samples, but in real life, signs are sometimes damaged, vandalized, or only partially visible. Essentially, we want the model to recognize signs even when the shape is in someway distorted, much like humans can. So, augmenting the training set with a variety of distortions is important.
-
-<img src='images/writeup/original-signs.jpg' width="100%"/>
-
-### Class/Label Distribution
-As you can see, the distribution is not uniform. The largest classes have 10x the number of traffic sign images than the smallest classes. This is expected given that in real-life there are certain signs which appear more frequently than others. However, when training the model, I wanted a more uniform distribution so that each class has the same number of training examples (and the model therefore has an equal number of opportunities to learn each sign).
-
-<img src='images/writeup/distribution.png' width="100%"/>
-
-
-###
+### Xử lý dữ liệu
+Xử lý dữ liệu bao gồm các bước như sau:
+1.	Cắt vùng có chứa biển báo ra khỏi ảnh ban đầu bằng công cụ “Crop” trong Image trên Windows 10.
+2.	Tăng độ sáng của những bức ảnh chụp bị ngược sáng hoặc độ sáng thấp.
+3.	Chuyển ảnh từ ảnh màu RGB sang ảnh xám.
+4.	Resize bức ảnh về chung một kích thước duy nhất là 64x64.
+5.	Sử dụng HOG để trích xuất đặc trưng cho bức ảnh. Chuẩn bị cho bước training
 ---
 ## Data Preprocessing
 Given the issues identified above, I decided to explore the following preprocessing operations (in addition to the standard practice of _normalization_):
