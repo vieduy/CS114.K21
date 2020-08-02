@@ -167,6 +167,11 @@ Thử test trên những bức ảnh chụp dọc đường hoặc một số h�
 <img src='images/predict_1.jpg'> <img src='images/predict_2.jpg'>
 
 Tuy nhiên có nhiều trường hợp bị sai hoặc không tìm ra biển báo
+
+<img src='images/pre_5.jpg'> <img src='images/pre_4.jpg'>
+
+<img src='images/test_round_2jpg'>
+
 Nguyên nhân chính:
 - Vùng chứa biển báo quá nhỏ so với bức ảnh
 - Bị nhận nhầm vì những biển báo đó chưa có trong tập training
