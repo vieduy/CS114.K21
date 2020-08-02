@@ -45,7 +45,7 @@ Ngày nay, cơ sở hạ tầng giao thông ngày càng phát triển, việc ph
 -	Ta sẽ sử dụng một model đã được train về các loại biển báo phổ biến trong làng đại học để dự đoán xem có biển báo trong cửa sổ hay không. 
 -  Sau khi dự đoán, nếu có đối tượng biển báo trong hình thì ta sẽ tiến hành trả về tọa độ vị trí của đối tượng.
 
-- Model sử dụng trong bài toán này: SVM
+- Model sử dụng trong bài toán này: SVM và KNN
 
 #### Support Vector Machine là gì?
 - Là thuật toán thường được áp dụng trong bài toán phân lớp, áp dụng cho cả dữ liệu tuyến tính và không tuyến tính.
