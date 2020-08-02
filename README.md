@@ -122,17 +122,17 @@ Xử lý dữ liệu bao gồm các bước như sau:
 <img src='images/15.png'>
 
 4.	Resize bức ảnh về chung một kích thước duy nhất là 64x64.
-5.	Sử dụng HOG để trích xuất đặc trưng cho bức ảnh. Chuẩn bị cho bước training
+5.	Sử dụng HOG để trích xuất đặc trưng cho bức ảnh. Ta sẽ được các vector (8100x1) để chuẩn bị cho bước training.
 
 ### Chọn model và training
-Dùng model SVM và KNN để training. Model được import từ scikit-learn
+Dùng model SVM và KNN để training. Model được import từ scikit-learn.
 Ở SVM cần quan tâm tới các hyperparameters như sau:
 -	C: 0.01
 -	Probability=true
 -	Random_state=42
 -	Kernel=”linear”
 
-Gọi phương thức model.fit để thực hiện training. Sau khi training xong ta sẽ lưu model lại cho những lần dự đoán tiếp theo
+Gọi phương thức model.fit để thực hiện training. Sau khi training xong ta sẽ lưu model lại cho những lần dự đoán tiếp theo.
 
 ### Dự đoán trên tập ảnh test
 - Ta sẽ đánh giá model của chúng ta bằng tập ảnh “Test”. 
@@ -151,16 +151,16 @@ Gọi phương thức model.fit để thực hiện training. Sau khi training x
 #### Nhận xét: 
 - Ta có thể thấy hai mô hình đạt độ chính xác trên 90%. Sở dĩ đạt độ chính xác cao như vậy là vì những bức ảnh training và testing đã được pre-processing. Chỉ chừa mỗi phần có chứa biển báo. Tăng sáng và độ tương phản cho một số bức ảnh tối hay độ tương phản thấp.
 - Mô hình SVM đạt độ chính xác cao hơn vì: 
-  1. SVM hoạt động tốt với kiểu dữ liệu nhiều chiều. Trong bài này mỗi vector sau khi rút trích HOG đều là vector có số chiều rất lớn
+  1. SVM hoạt động tốt với kiểu dữ liệu nhiều chiều. Trong bài này mỗi vector sau khi rút trích HOG đều là vector có số chiều rất lớn.
   2. KNN sai nhiều ở hai loại biển báo thứ 2 và thứ 3. Đây là 2 loại biển báo khá tương đồng nhau. Vì vậy KNN khi predict nó sẽ đưa ra kết quả sau khi tính khoảng cách giữa các vector, điều đó dẫn tới việc sẽ có nhiều nhầm lẫn giữa 2 loại biển báo đó nên hiệu suất bị giảm đi đáng kể thay vì training như SVM.
 - Ở một số loại biển báo như biển báo W.207b và Pedestrians có độ chính xác thấp bởi vì chúng đề là những loại biển báo nguy hiểm có hình dạng là tam giác. Cho nên phần ROI chỉ chiếm một nửa bức ảnh(Các biển báo tròn chiếm 79% bức ảnh). Vậy nên các loại biển báo nguy hiểm chứa vùng nhiễu lớn hơn các loại biển báo tròn. Điều đó đã làm giảm hiệu suất khi chúng ta trích xuất HOG và training model bằng SVM.
 - Ở bước trượt cửa sổ để dự đoán biển báo. Có một số vấn đề như sau:
-  1.	Khi ta để bước nhảy của cửa sổ đó bé hơn hoặc bằng 8 và pyramid-scale<1.25 thì hầu hết những biển báo đều được phát hiện ra vị trí trong khung hình. Tuy nhiên chúng lại có nhược điểm là tốc độ phát hiện ra biển báo rất chậm. Ngược lại khi ta để bước nhảy lớn hơn 8 hoặc pyramid-scale > 1.25 thì bắt đầu có hiện tượng model không phát hiện ra vị trí biển báo. Nguyên nhân là do khi để bước nhảy lớn, cửa sổ của chúng ta có thể đã skip hoặc nhảy qua một phần vùng có chứa biển báo, hoặc với việc để pyramid-scale >1.25 thì kích thước ảnh giảm xuống đột ngột nên khi trích xuất HOG ở vùng đó để dự đoán thì kết quả dự đoán rơi vào nhãn -1 (Nhãn ngoại cảnh). Vậy sau quá trình thực nghiệm và điều chỉnh, thì nhóm em đã chọn window-step = 8 và pyramid-scale = 1.25
+  1.	Khi ta để bước nhảy của cửa sổ đó bé hơn hoặc bằng 8 và pyramid-scale<1.25 thì hầu hết những biển báo đều được phát hiện ra vị trí trong khung hình. Tuy nhiên chúng lại có nhược điểm là tốc độ phát hiện ra biển báo rất chậm. Ngược lại khi ta để bước nhảy lớn hơn 8 hoặc pyramid-scale > 1.25 thì bắt đầu có hiện tượng model không phát hiện ra vị trí biển báo. Nguyên nhân là do khi để bước nhảy lớn, cửa sổ của chúng ta có thể đã skip hoặc nhảy qua một phần vùng có chứa biển báo, hoặc với việc để pyramid-scale >1.25 thì kích thước ảnh giảm xuống đột ngột nên khi trích xuất HOG ở vùng đó để dự đoán thì kết quả dự đoán rơi vào nhãn -1 (Nhãn ngoại cảnh). Vậy sau quá trình thực nghiệm và điều chỉnh, thì nhóm em đã chọn window-step = 8 và pyramid-scale = 1.25.
   2.	Trước khi dự đoán, vì ảnh input có khả năng là một bức ảnh có độ phân giải lớn, nên nếu ta tìm kiếm trên bức ảnh đó sẽ cho ra thời gian tìm kiếm lâu, vậy nên để giảm tối đa chi phí tìm kiếm, ta sẽ resize bức ảnh về kích thước nhỏ nhất là 400 cho chiều dài hoặc chiều rộng(giữa nguyên tỉ lệ ảnh).
   3.	Mặc dù vậy thì thời gian tìm kiếm vẫn diễn ra trong thời gian lâu. Xấp xỉ 20s cho một bức ảnh. Đây là nhược điểm lớn nhất của mô hình.
 ---
 ## Thử nghiệm trên những bức ảnh mới
-Thử test trên những bức ảnh chụp dọc đường hoặc một số hình ảnh trên mạng
+Thử test trên những bức ảnh chụp dọc đường hoặc một số hình ảnh trên mạng.
 
 <img src='images/pre_2.jpg'> <img src='images/pre_3.jpg'>
 
