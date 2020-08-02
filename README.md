@@ -174,7 +174,7 @@ Tuy nhiên có nhiều trường hợp bị sai hoặc không tìm ra biển bá
 
 Nguyên nhân chính:
 - Vùng chứa biển báo quá nhỏ so với bức ảnh
-- Bị nhận nhầm vì những biển báo đó chưa có trong tập training
+- Biển báo chưa có trong dataset bị nhận nhầm với những biển báo có trong tập training vì hình dáng khá giống nhau
 - Góc chụp nghiêng nhiều so với những bức ảnh mà model được training
 
 ---
