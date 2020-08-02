@@ -4,8 +4,7 @@
 # **Machine Learning Capstone: Phát hiện biển báo giao thông phổ biến trong Làng Đại học**
 ###
 ### Tổng quan
-Mục tiêu của đồ án này là xây dựng một mô hình có thể phát hiện được các loại biển báo phổ biến trong Làng Đại học.
-Ở đây ta sẽ phân loại 6 loại biển báo phổ biến nhất trong Làng Đại học.
+Ngày nay, cơ sở hạ tầng giao thông ngày càng phát triển, việc phát hiện biển báo để cung cấp thông tin đến người tham gia giao thông là một điều rất quan trọng. Tận dụng những kiến thức đã được học ở môn Machine Learning, kết hợp với những điều gần gũi với đời sống. Nhóm chúng em đã chọn đề tài “Phát hiện các loại biển báo giao thông phổ biến ở Làng Đại học” làm đề tài nghiên cứu. Giúp mọi người có thể hiểu đâu là biển báo giao thông và chúng có ý nghĩa thế nào.
 
 ### Mô tả  bài toán:
 1. Input: Một bức ảnh có chứa biển báo bất kỳ.
@@ -46,6 +45,14 @@ Mục tiêu của đồ án này là xây dựng một mô hình có thể phát
 -	Ta sẽ sử dụng một model đã được train về các loại biển báo phổ biến trong làng đại học để dự đoán xem có biển báo trong cửa sổ hay không. 
 -  Sau khi dự đoán, nếu có đối tượng biển báo trong hình thì ta sẽ tiến hành trả về tọa độ vị trí của đối tượng.
 
+- Model sử dụng trong bài toán này: SVM
+
+#### Support Vector Machine là gì?
+- Là thuật toán thường được áp dụng trong bài toán phân lớp, áp dụng cho cả dữ liệu tuyến tính và không tuyến tính.
+- Mục tiêu: tìm được một mặt phân cách (siêu phẳng trong không gian đa chiều) sao cho tất cả các điểm dữ liệu cùng loại đều nằm về một phía riêng biệt của mặt phân cách đó.
+
+<img src='images/svm.jpg'>
+
 ### Tổng hợp lại các khung viền
 -  Trong lúc trượt cửa sổ, tùy thuộc vào bước nhảy, sẽ có nhiều cửa sổ thỏa mãn điều kiện có chứa biển báo. Cho nên chúng ta cần phải chọn ra một cửa sổ tối ưu nhất.
 -  Để làm được điều đó chúng ta sẽ sử dụng kỹ thuật Non-maximum Suppression (NMS)
@@ -53,14 +60,13 @@ Mục tiêu của đồ án này là xây dựng một mô hình có thể phát
 <img src='images/3.jpg'> <img src='images/1.jpg'>
 
 #### Non-maximum Suppression (NMS)
-Input: Một danh sách B là các cửa sổ thỏa mãn, cùng với các xác suất dự đoán tương ứng và cuối cùng là ngưỡng overlap N.
-Output: Danh sách D các cửa sổ tối ưu cuối cùng.
+##### Input: Một danh sách B là các cửa sổ thỏa mãn, cùng với các xác suất dự đoán tương ứng và cuối cùng là ngưỡng overlap N.
+##### Output: Danh sách D các cửa sổ tối ưu cuối cùng.
 Các bước thực hiện: 
-1.	Chọn cửa sổ có xác suất dự đoán cao nhất. Xóa nó khỏi B và đưa nó vào D. 
-2.	Tính giá trị IOU(Intersection over Union) của cửa sổ mới được chọn với những cửa sổ còn lại. Nếu giá trị IOU lớn hơn ngưỡng N thì ta sẽ xóa nó khỏi lớp B
-3.	Tiếp tục chọn cửa sổ có xác suất dự đoán cao nhất còn lại. Quay về bước 2
-4.	Lặp cho tới khi không còn giá trị nào trong B
-Giá trị IOU được sử dụng để tính toán sự trùng lặp của 2 khung cửa sổ
+  -	Chọn cửa sổ có xác suất dự đoán cao nhất. Xóa nó khỏi B và đưa nó vào D. 
+  -	Tính giá trị IOU(Intersection over Union)(Giá trị IOU được sử dụng để tính toán sự trùng lặp của 2 khung cửa sổ) của cửa sổ mới được chọn với những cửa sổ còn lại. Nếu giá trị IOU lớn hơn ngưỡng N thì ta sẽ xóa nó khỏi lớp B
+  -	Tiếp tục chọn cửa sổ có xác suất dự đoán cao nhất còn lại. Quay về bước 2
+  -	Lặp cho tới khi không còn giá trị nào trong B
 
 <img src='images/4.jpg'>
 
@@ -121,10 +127,10 @@ Xử lý dữ liệu bao gồm các bước như sau:
 ### Chọn model và training
 Dùng model SVM và KNN để training. Model được import từ scikit-learn
 Ở SVM cần quan tâm tới các hyperparameters như sau:
-1.	C: 0.01
-2.	Probability=true
-3.	Random_state=42
-4.	Kernel=”linear”
+-	C: 0.01
+-	Probability=true
+-	Random_state=42
+-	Kernel=”linear”
 
 Gọi phương thức model.fit để thực hiện training. Sau khi training xong ta sẽ lưu model lại cho những lần dự đoán tiếp theo
 
@@ -155,3 +161,9 @@ Nguyên nhân chính:
 
 ---
 ## Tài liệu tham khảo
+1. SVM: https://machinelearningcoban.com/2017/04/09/smv/
+2. HOG: https://viblo.asia/p/tim-hieu-ve-phuong-phap-mo-ta-dac-trung-hog-histogram-of-oriented-gradients-V3m5WAwxZO7
+3. Sliding window: https://www.pyimagesearch.com/2015/03/23/sliding-windows-for-object-detection-with-python-and-opencv/
+4. NMS: https://towardsdatascience.com/non-maximum-suppression-nms-93ce178e177c
+5. Object detection: Chapter 2 PyimageSearch Gurus - Adrian Rosebrock
+6. Dataset 13 Natural Scene Categories: http://vision.stanford.edu/resources_links.html
