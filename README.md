@@ -166,3 +166,4 @@ Nguyên nhân chính:
 3. Sliding window: https://www.pyimagesearch.com/2015/03/23/sliding-windows-for-object-detection-with-python-and-opencv/
 4. NMS: https://towardsdatascience.com/non-maximum-suppression-nms-93ce178e177c
 5. Object detection: Chapter 2 PyimageSearch Gurus - Adrian Rosebrock
+6. Dataset 13 Natural Scene Categories: http://vision.stanford.edu/resources_links.html
