@@ -8,7 +8,7 @@ Ngày nay, cơ sở hạ tầng giao thông ngày càng phát triển, việc ph
 
 ### Mô tả  bài toán:
 1. Input: Một bức ảnh có chứa biển báo bất kỳ.
-2. Output: Vị trí biển báo trong bức ảnh và tên biển báo đó.
+2. Output: Ảnh input với bounding box khoanh vùng có biển báo và tên biển báo
 
 <img src='images/2.jpg'> <img src='images/1.jpg'>
 
@@ -85,7 +85,7 @@ Mô hình này mục đích là để đưa ra kết quả dự đoán xem trong
 5. Đánh giá mô hình và nhận xét
 
 ### Thu thập dữ liệu:
-Dữ liệu là những bức ảnh biển báo giao thông tự chụp bằng điện thoại. Tùy thuộc vào tần suất xuất hiện nên số ảnh ở mỗi lớp có sự chênh lệch
+Dữ liệu là những bức ảnh biển báo giao thông nhóm tự chụp bằng điện thoại. Tùy thuộc vào tần suất xuất hiện nên số ảnh ở mỗi lớp có sự chênh lệch
 Ảnh không chứa biển báo: SceneClass13 gồm 3000 tấm
 
 <img src='images/11.jpg'>
@@ -116,8 +116,7 @@ Xử lý dữ liệu bao gồm các bước như sau:
 
 <img src='images/12.jpg'>
 
-2.	Tăng độ sáng của những bức ảnh chụp bị ngược sáng hoặc độ sáng thấp.
-3.	Chuyển ảnh từ ảnh màu RGB sang ảnh xám.
+2.	Chuyển ảnh từ ảnh màu RGB sang ảnh xám.
 
 <img src='images/15.png'>
 
