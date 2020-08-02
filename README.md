@@ -141,11 +141,11 @@ Gọi phương thức model.fit để thực hiện training. Sau khi training x
 
 #### SVM
 
-<img src='images/svm.jpg'>
+<img src='images/acc.jpg'>
 
 #### KNN
 
-<img src='images/KNN.jpg'>
+<img src='images/knn.jpg'>
 
 ### Đánh giá mô hình
 #### Nhận xét: 
