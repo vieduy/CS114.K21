@@ -170,7 +170,7 @@ Tuy nhiên có nhiều trường hợp bị sai hoặc không tìm ra biển bá
 
 <img src='images/pre_5.jpg'> <img src='images/pre_4.jpg'>
 
-<img src='images/test_round_2jpg'>
+<img src='images/test_round_2.jpg'>
 
 Nguyên nhân chính:
 - Vùng chứa biển báo quá nhỏ so với bức ảnh
