@@ -156,7 +156,7 @@ Gọi phương thức model.fit để thực hiện training. Sau khi training x
 - Ở bước trượt cửa sổ để dự đoán biển báo. Có một số vấn đề như sau:
   1.	Khi ta để bước nhảy của cửa sổ đó bé hơn hoặc bằng 8 và pyramid-scale<1.25 thì hầu hết những biển báo đều được phát hiện ra vị trí trong khung hình. Tuy nhiên chúng lại có nhược điểm là tốc độ phát hiện ra biển báo rất chậm. Ngược lại khi ta để bước nhảy lớn hơn 8 hoặc pyramid-scale > 1.25 thì bắt đầu có hiện tượng model không phát hiện ra vị trí biển báo. Nguyên nhân là do khi để bước nhảy lớn, cửa sổ của chúng ta có thể đã skip hoặc nhảy qua một phần vùng có chứa biển báo, hoặc với việc để pyramid-scale >1.25 thì kích thước ảnh giảm xuống đột ngột nên khi trích xuất HOG ở vùng đó để dự đoán thì kết quả dự đoán rơi vào nhãn -1 (Nhãn ngoại cảnh). Vậy sau quá trình thực nghiệm và điều chỉnh, thì nhóm em đã chọn window-step = 8 và pyramid-scale = 1.25.
   2.	Trước khi dự đoán, vì ảnh input có khả năng là một bức ảnh có độ phân giải lớn, nên nếu ta tìm kiếm trên bức ảnh đó sẽ cho ra thời gian tìm kiếm lâu, vậy nên để giảm tối đa chi phí tìm kiếm, ta sẽ resize bức ảnh về kích thước nhỏ nhất là 400 cho chiều dài hoặc chiều rộng(giữa nguyên tỉ lệ ảnh).
-  3.	Mặc dù vậy thì thời gian tìm kiếm vẫn diễn ra trong thời gian lâu. Xấp xỉ 20s cho một bức ảnh. Đây là nhược điểm lớn nhất của mô hình.
+  3.	Mặc dù vậy thì thời gian tìm kiếm vẫn diễn ra trong thời gian lâu. Xấp xỉ 30s cho một bức ảnh. Đây là nhược điểm lớn nhất của mô hình.
 ---
 ## Thử nghiệm trên những bức ảnh mới
 Thử test trên những bức ảnh chụp dọc đường hoặc một số hình ảnh trên mạng.
