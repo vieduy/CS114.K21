@@ -1,7 +1,7 @@
 <img src='images/collage-1b.jpg'>
 
 ##### Môn: CS114.K21
-# **Machine Learning Capstone: Phát hiện biển báo giao thông phổ biến trong Làng Đại học**
+# **Machine Learning Capstone: Phát hiện và phân loại biển báo giao thông trong ảnh**
 ###
 ### Tổng quan
 Ngày nay, cơ sở hạ tầng giao thông ngày càng phát triển, việc phát hiện biển báo để cung cấp thông tin đến người tham gia giao thông là một điều rất quan trọng. Tận dụng những kiến thức đã được học ở môn Machine Learning, kết hợp với những điều gần gũi với đời sống. Nhóm chúng em đã chọn đề tài “Phát hiện các loại biển báo giao thông phổ biến ở Làng Đại học” làm đề tài nghiên cứu. Giúp mọi người có thể hiểu đâu là biển báo giao thông và chúng có ý nghĩa thế nào.
@@ -12,21 +12,21 @@ Ngày nay, cơ sở hạ tầng giao thông ngày càng phát triển, việc ph
 
 <img src='images/2.jpg'> <img src='images/1.jpg'>
 
-### Để xây dựng được mô hình như yêu cầu bài toán đó, ta cần phải xây dựng 2 mô hình:
-1. Phát hiện biển báo(*).
+### Để xây dựng được mô hình như yêu cầu bài toán đó, ta cần phải trải qua 2 bước:
+1. Tìm biển báo(*).
 2. Phân loại biển báo(* *).
 
 ###
 ---
 ###
-## Mô hình phát hiện biển báo:
+## Phát hiện biển báo:
 1. Quét bức ảnh input bằng một cửa sổ trượt từ trái sang phải và từ trên xuống dưới.
 2. Trích xuất đặc trưng ở mỗi vùng scan qua trên hình.
 3.	Sử dụng model phân loại biển báo(* *) để dựng đoán xem vùng đó có chứa biển báo hay không.
 4.	Tổng hợp lại các vùng có chứa biển báo thỏa mãn để có một vùng duy nhất (Final bounding boxes) 
 
 ### Xây dựng Scanner
-Để có thể tìm được vật thể chúng ta cần tìm, ta cần phải quét toàn bộ trên bức hình. Vì kích thước của vật thể có thể nằm bất cứ đâu trên hình và có kích thước ngẫu nhiên. Cho nên chúng ta cần xây dụng “scanner” theo 2 tiêu chí sau:
+Để có thể tìm được vật thể chúng ta cần tìm, ta cần phải quét toàn bộ trên bức hình. Vì vật thể có thể nằm bất cứ đâu trên hình và có kích thước ngẫu nhiên. Cho nên chúng ta cần xây dụng “scanner” theo 2 tiêu chí sau:
 - Kích thước ảnh quét: Ta cần phải quét trên bức ảnh với nhiều kích thước khác nhau để có thể tìm ra được vật thể. Gọi tắt là kỹ thuật “Image Pyramid”.
 
 <img src='images/3.png'>
@@ -37,7 +37,7 @@ Ngày nay, cơ sở hạ tầng giao thông ngày càng phát triển, việc ph
 
 ### Trích xuất đặc trưng ở mỗi vùng scan trên hình
 -	Ta sẽ sử dụng HOG((histogram of oriented gradients) để trích xuất đặc trưng trên những vùng mà cửa sổ trượt qua.
--	HOG là một feature descriptor được sử dụng trong computer vision và xử lý hình ảnh, dùng để detec một đối tượng. Các khái niệm về HOG được nêu ra từ năm 1986 tuy nhiên cho đến năm 2005 HOG mới được sử dụng rộng rãi sau khi Navneet Dalal và Bill Triggs công bố những bổ sung về HOG. HOG tương tự như các biểu đồ edge orientation, scale-invariant feature transform descriptors (như sift, surf ,..), shape contexts nhưnghog được tính toán trên một lưới dày đặc các cell và chuẩn hóa sự tương phản giữa các block để nâng cao độ chính xác. HOG được sử dụng chủ yếu để mô tả hình dạng và sự xuất hiện của một object trong ảnh.
+-	HOG là một feature descriptor được sử dụng trong computer vision và xử lý hình ảnh, dùng để detect một đối tượng. Các khái niệm về HOG được nêu ra từ năm 1986 tuy nhiên cho đến năm 2005 HOG mới được sử dụng rộng rãi sau khi Navneet Dalal và Bill Triggs công bố những bổ sung về HOG. HOG tương tự như các biểu đồ edge orientation, scale-invariant feature transform descriptors (như sift, surf ,..), shape contexts nhưng HOG được tính toán trên một lưới dày đặc các cell và chuẩn hóa sự tương phản giữa các block để nâng cao độ chính xác. HOG được sử dụng chủ yếu để mô tả hình dạng và sự xuất hiện của một object trong ảnh.
 
 <img src='images/4.png'>
 
@@ -120,8 +120,8 @@ Xử lý dữ liệu bao gồm các bước như sau:
 
 <img src='images/15.png'>
 
-4.	Resize bức ảnh về chung một kích thước duy nhất là 64x64.
-5.	Sử dụng HOG để trích xuất đặc trưng cho bức ảnh. Ta sẽ được các vector (8100x1) để chuẩn bị cho bước training.
+3.	Resize bức ảnh về chung một kích thước duy nhất là 64x64.
+4.	Sử dụng HOG để trích xuất đặc trưng cho bức ảnh. Ta sẽ được các vector 8100x1 để chuẩn bị cho bước training.
 
 ### Chọn model và training
 Dùng model SVM và KNN để training. Model được import từ scikit-learn.
